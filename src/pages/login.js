@@ -1,0 +1,102 @@
+import React, { Component } from "react";
+import withStyles from "@material-ui/core/styles/withStyles";
+import axios from "axios";
+import { Link, useHistory } from "react-router-dom";
+import MyButton from "../components/MyButton";
+
+//MUI Stuff
+import Grid from "@material-ui/core/Grid";
+import Button from "@material-ui/core/Button";
+import Typography from "@material-ui/core/Typography";
+import TextField from "@material-ui/core/TextField";
+import CircularProgress from "@material-ui/core/CircularProgress";
+
+const styles = theme => ({
+  ...theme.spreadThis,
+  form: {
+    textAlign: "center"
+  },
+  textField: {
+    margin: "10px auto 10px auto"
+  },
+  button: {
+    marginTop: 20,
+    position: "relative"
+  }
+});
+
+class login extends Component {
+  state = {
+    email: "",
+    password: "",
+    errors: {}
+  };
+
+  loginUser = userData => {
+    axios
+      .post("/login", userData)
+      .then(res => {
+        console.log("SUCCESS");
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  };
+  handleSubmit = event => {
+    event.preventDefault();
+    const userData = {
+      email: this.state.email,
+      password: this.state.password
+    };
+    this.loginUser(userData);
+  };
+
+  handleChange = event => {
+    this.setState({
+      [event.target.name]: event.target.value
+    });
+  };
+
+  render() {
+    const { classes } = this.props;
+
+    return (
+      <Grid container className={classes.form}>
+        <Grid item sm />
+        <Grid item sm>
+          <Typography variant="h2">Login</Typography>
+          <form noValidate onSubmit={this.handleSubmit}>
+            <TextField
+              id="email"
+              name="email"
+              type="email"
+              label="Email"
+              className={classes.textField}
+              value={this.state.email}
+              onChange={this.handleChange}
+              fullWidth
+            />
+            <TextField
+              id="password"
+              name="password"
+              type="password"
+              label="Password"
+              className={classes.textField}
+              value={this.state.password}
+              onChange={this.handleChange}
+              fullWidth
+            />
+            <MyButton type="submit" className={classes.button} />
+            <br />
+            <small>
+              No account? Sign up <Link to="/signup">here</Link>
+            </small>
+          </form>
+        </Grid>
+        <Grid item sm />
+      </Grid>
+    );
+  }
+}
+
+export default withStyles(styles)(login);
