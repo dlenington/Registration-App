@@ -1,15 +1,14 @@
 import React, { Component } from "react";
 import withStyles from "@material-ui/core/styles/withStyles";
 import axios from "axios";
-import { Link, useHistory } from "react-router-dom";
+import { Link } from "react-router-dom";
 import MyButton from "../components/MyButton";
 
 //MUI Stuff
 import Grid from "@material-ui/core/Grid";
-import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 import TextField from "@material-ui/core/TextField";
-import CircularProgress from "@material-ui/core/CircularProgress";
+import Button from "@material-ui/core/Button";
 
 const styles = theme => ({
   ...theme.spreadThis,
@@ -37,9 +36,14 @@ class login extends Component {
       .post("/login", userData)
       .then(res => {
         console.log("SUCCESS");
+        localStorage.setItem("FBIdToken", `Bearer ${res.data.token}`);
+        this.props.history.push("/");
       })
       .catch(err => {
         console.log(err);
+        this.setState({
+          errors: err.response.data
+        });
       });
   };
   handleSubmit = event => {
@@ -59,7 +63,7 @@ class login extends Component {
 
   render() {
     const { classes } = this.props;
-
+    const { errors } = this.state;
     return (
       <Grid container className={classes.form}>
         <Grid item sm />
@@ -72,6 +76,8 @@ class login extends Component {
               type="email"
               label="Email"
               className={classes.textField}
+              helperText={errors.general}
+              errors={errors.general ? true : false}
               value={this.state.email}
               onChange={this.handleChange}
               fullWidth
@@ -86,7 +92,14 @@ class login extends Component {
               onChange={this.handleChange}
               fullWidth
             />
-            <MyButton type="submit" className={classes.button} />
+            <Button
+              type="submit"
+              variant="contained"
+              color="primary"
+              className={classes.button}
+            >
+              Login
+            </Button>
             <br />
             <small>
               No account? Sign up <Link to="/signup">here</Link>

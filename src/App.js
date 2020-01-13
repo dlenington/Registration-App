@@ -1,5 +1,5 @@
-import React, { Component, Fragment } from "react";
-import { BrowserRouter, Route, Switch, Router } from "react-router-dom";
+import React from "react";
+import { Route, Switch } from "react-router-dom";
 import { MuiThemeProvider, createMuiTheme } from "@material-ui/core/styles";
 import themeFile from "./util/theme";
 import Home from "./pages/home";

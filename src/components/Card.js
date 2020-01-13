@@ -24,21 +24,18 @@ class MyCard extends Component {
   state = { posts: [] };
 
   componentDidMount() {
-    axios.get("/paintings").then(res => {
+    axios.get("/posts").then(res => {
       this.setState({
         posts: res.data
       });
-      
     });
   }
   render() {
     const { classes } = this.props;
-    const {posts} = this.state;
+    const { posts } = this.state;
     console.log("posts" + posts);
-    return (
-      
-      posts.map(post => (
-        <Card className={classes.card}>
+    return posts.map(post => (
+      <Card className={classes.card}>
         <CardActionArea>
           <CardContent>
             <Typography gutterBottom variant="h5" component="h2">
@@ -58,8 +55,7 @@ class MyCard extends Component {
           </Button>
         </CardActions>
       </Card>
-      ))
-    );
+    ));
   }
 }
 

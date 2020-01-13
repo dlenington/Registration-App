@@ -2,17 +2,14 @@ import React from "react";
 import { useHistory } from "react-router-dom";
 
 //MUI Stuff
-
 import Button from "@material-ui/core/Button";
 
 const MyButton = () => {
   let history = useHistory();
-  // let { classes } = this.props.className;
 
   function handleClick() {
     history.push("/");
   }
-
   return (
     <Button
       type="submit"
