@@ -24,16 +24,18 @@ const styles = theme => ({
   }
 });
 
-class login extends Component {
+class signup extends Component {
   state = {
     email: "",
     password: "",
+    confirmPassword: "",
+    handle: "",
     errors: {}
   };
 
-  loginUser = userData => {
+  signupUser = newUserData => {
     axios
-      .post("/login", userData)
+      .post("/signup", newUserData)
       .then(res => {
         console.log("SUCCESS");
         localStorage.setItem("FBIdToken", `Bearer ${res.data.token}`);
@@ -48,11 +50,13 @@ class login extends Component {
   };
   handleSubmit = event => {
     event.preventDefault();
-    const userData = {
+    const newUserData = {
       email: this.state.email,
-      password: this.state.password
+      password: this.state.password,
+      confirmPassword: this.state.confirmPassword,
+      handle: this.state.handle
     };
-    this.loginUser(userData);
+    this.signupUser(newUserData);
   };
 
   handleChange = event => {
@@ -68,7 +72,7 @@ class login extends Component {
       <Grid container className={classes.form}>
         <Grid item sm />
         <Grid item sm>
-          <Typography variant="h2">Login</Typography>
+          <Typography variant="h2">Signup</Typography>
           <form noValidate onSubmit={this.handleSubmit}>
             <TextField
               id="email"
@@ -92,17 +96,37 @@ class login extends Component {
               onChange={this.handleChange}
               fullWidth
             />
+            <TextField
+              id="confirmPassword"
+              name="confirmPassword"
+              type="confirmPassword"
+              label="ConfirmPassword"
+              className={classes.textField}
+              value={this.state.confirmPassword}
+              onChange={this.handleChange}
+              fullWidth
+            />
+            <TextField
+              id="handle"
+              name="handle"
+              type="handle"
+              label="Handle"
+              className={classes.textField}
+              value={this.state.handle}
+              onChange={this.handleChange}
+              fullWidth
+            />
             <Button
               type="submit"
               variant="contained"
               color="primary"
               className={classes.button}
             >
-              Login
+              Signup
             </Button>
             <br />
             <small>
-              No account? Sign up <Link to="/signup">here</Link>
+              Already have an account? Log in <Link to="/login">here</Link>
             </small>
           </form>
         </Grid>
@@ -112,4 +136,4 @@ class login extends Component {
   }
 }
 
-export default withStyles(styles)(login);
+export default withStyles(styles)(signup);

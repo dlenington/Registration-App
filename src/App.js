@@ -4,6 +4,7 @@ import { MuiThemeProvider, createMuiTheme } from "@material-ui/core/styles";
 import themeFile from "./util/theme";
 import Home from "./pages/home";
 import login from "./pages/login";
+import signup from "./pages/signup";
 
 import "./App.css";
 import NavBar from "./components/NavBar";
@@ -17,6 +18,7 @@ function App() {
       <Switch>
         <Route exact path="/" component={Home} />
         <Route exact path="/login" component={login} />
+        <Route exact path="/signup" component={signup} />
       </Switch>
     </MuiThemeProvider>
   );
