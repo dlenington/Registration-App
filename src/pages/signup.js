@@ -99,7 +99,7 @@ class signup extends Component {
             <TextField
               id="confirmPassword"
               name="confirmPassword"
-              type="confirmPassword"
+              type="password"
               label="ConfirmPassword"
               className={classes.textField}
               value={this.state.confirmPassword}
@@ -109,7 +109,7 @@ class signup extends Component {
             <TextField
               id="handle"
               name="handle"
-              type="handle"
+              type="text"
               label="Handle"
               className={classes.textField}
               value={this.state.handle}

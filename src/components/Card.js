@@ -2,7 +2,10 @@ import React, { Component } from "react";
 import withStyles from "@material-ui/core/styles/withStyles";
 //import { makeStyles } from '@material-ui/core/styles';
 import axios from "axios";
+import dayjs from "dayjs";
+import relativeTime from "dayjs/plugin/relativeTime";
 
+//MUI Stuff
 import Card from "@material-ui/core/Card";
 import CardActionArea from "@material-ui/core/CardActionArea";
 import CardActions from "@material-ui/core/CardActions";
@@ -31,17 +34,21 @@ class MyCard extends Component {
     });
   }
   render() {
+    dayjs.extend(relativeTime);
     const { classes } = this.props;
     const { posts } = this.state;
     console.log("posts" + posts);
     return posts.map(post => (
-      <Card className={classes.card}>
+      <Card key="post.postId" className={classes.card}>
         <CardActionArea>
           <CardContent>
             <Typography gutterBottom variant="h5" component="h2">
-              Lizard
+              {post.userHandle}
             </Typography>
             <Typography variant="body2" color="textSecondary" component="p">
+              {dayjs(post.createdAt).fromNow()}
+            </Typography>
+            <Typography variant="body1" color="textSecondary" component="p">
               {post.body}
             </Typography>
           </CardContent>
