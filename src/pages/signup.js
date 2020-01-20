@@ -92,6 +92,8 @@ class signup extends Component {
               type="password"
               label="Password"
               className={classes.textField}
+              helperText={errors.password}
+              error={errors.password ? true : false}
               value={this.state.password}
               onChange={this.handleChange}
               fullWidth
@@ -102,6 +104,8 @@ class signup extends Component {
               type="password"
               label="ConfirmPassword"
               className={classes.textField}
+              helperText={errors.confirmPassword}
+              error={errors.confirmPassword ? true : false}
               value={this.state.confirmPassword}
               onChange={this.handleChange}
               fullWidth
