@@ -45,7 +45,7 @@ class MyCard extends Component {
             <Typography gutterBottom variant="h5" component="h2">
               {post.userHandle}
             </Typography>
-            <Typography variant="body2" color="textSecondary" component="p">
+            <Typography gutterBottom variant="body2" component="h2">
               {dayjs(post.createdAt).fromNow()}
             </Typography>
             <Typography variant="body1" color="textSecondary" component="p">
