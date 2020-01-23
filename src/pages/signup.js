@@ -116,6 +116,8 @@ class signup extends Component {
               type="text"
               label="Handle"
               className={classes.textField}
+              helperText={errors.handle}
+              error={this.state.handle ? true : false}
               value={this.state.handle}
               onChange={this.handleChange}
               fullWidth

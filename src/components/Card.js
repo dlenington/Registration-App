@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 //import { makeStyles } from '@material-ui/core/styles';
+import withStyles from "@material-ui/core/styles/withStyles";
 import axios from "axios";
 import dayjs from "dayjs";
 import relativeTime from "dayjs/plugin/relativeTime";
