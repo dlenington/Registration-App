@@ -18,7 +18,17 @@ import Typography from "@material-ui/core/Typography";
 class Profile extends Component {
   state = {};
   render() {
-    return <Card></Card>;
+    return (
+      <Card>
+        <CardActionArea>
+          <CardContent>
+            <Typography>UserHandle</Typography>
+            <Typography>Location</Typography>
+            <Typography>Date Joined</Typography>
+          </CardContent>
+        </CardActionArea>
+      </Card>
+    );
   }
 }
 
