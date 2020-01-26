@@ -17,6 +17,9 @@ import Typography from "@material-ui/core/Typography";
 
 class Profile extends Component {
   state = {};
+  componentDidMount() {
+    axios.get("/user");
+  }
   render() {
     return (
       <Card>
