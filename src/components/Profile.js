@@ -16,9 +16,17 @@ import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 
 class Profile extends Component {
-  state = {};
+  state = {
+    user: {}
+  };
   componentDidMount() {
-    axios.get("/user");
+    axios.get("/user").then(res => {
+      this.setState({
+        user: {
+          userHandle: res.userHandle
+        }
+      });
+    });
   }
   render() {
     return (
@@ -28,6 +36,7 @@ class Profile extends Component {
             <Typography>UserHandle</Typography>
             <Typography>Location</Typography>
             <Typography>Date Joined</Typography>
+            <Typography>Bio</Typography>
           </CardContent>
         </CardActionArea>
       </Card>
