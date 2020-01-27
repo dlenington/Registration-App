@@ -23,17 +23,18 @@ class Profile extends Component {
     axios.get("/user").then(res => {
       this.setState({
         user: {
-          userHandle: res.userHandle
+          userHandle: res.data.userHandle
         }
       });
     });
   }
   render() {
+    const { user } = this.state;
     return (
       <Card>
         <CardActionArea>
           <CardContent>
-            <Typography>UserHandle</Typography>
+            <Typography>{user.userHandle}</Typography>
             <Typography>Location</Typography>
             <Typography>Date Joined</Typography>
             <Typography>Bio</Typography>
