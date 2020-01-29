@@ -20,10 +20,14 @@ class Profile extends Component {
     user: {}
   };
   componentDidMount() {
-    axios.get(`/user/`).then(res => {
+    const handle = this.props.match.params.handle;
+    axios.get(`/user/${handle}`).then(res => {
       this.setState({
         user: {
-          userHandle: res.data.userHandle
+          credentials: {
+            handle,
+            createdAt
+          }
         }
       });
     });
