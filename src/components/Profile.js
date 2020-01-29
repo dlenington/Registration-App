@@ -20,7 +20,7 @@ class Profile extends Component {
     user: {}
   };
   componentDidMount() {
-    axios.get("/user").then(res => {
+    axios.get(`/user/`).then(res => {
       this.setState({
         user: {
           userHandle: res.data.userHandle

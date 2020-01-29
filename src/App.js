@@ -19,6 +19,7 @@ function App() {
         <Route exact path="/" component={Home} />
         <Route exact path="/login" component={login} />
         <Route exact path="/signup" component={signup} />
+        <Route exact path="/user/:" component={profile} />
       </Switch>
     </MuiThemeProvider>
   );
