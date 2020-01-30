@@ -5,6 +5,7 @@ import themeFile from "./util/theme";
 import Home from "./pages/home";
 import login from "./pages/login";
 import signup from "./pages/signup";
+import profile from "./components/Profile";
 
 import "./App.css";
 import NavBar from "./components/NavBar";
