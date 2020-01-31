@@ -22,21 +22,27 @@ class Profile extends Component {
   componentDidMount() {
     const handle = this.props.match.params.handle;
     axios.get(`/user/${handle}`).then(res => {
+      console.log(res);
       this.setState({
         user: {
-          handle
+          credentials: {
+            handle,
+            createdAt: credentials.createdAt
+          }
         }
       });
     });
   }
   render() {
-    const { user } = this.state;
+    const {
+      credentials: { handle, createdAt }
+    } = this.state.user;
     return (
       <Card>
         <CardActionArea>
           <CardContent>
-            <Typography>{user.handle}</Typography>
-            <Typography>Location</Typography>
+            <Typography>{handle}</Typography>
+            <Typography>{createdAt}</Typography>
             <Typography>Date Joined</Typography>
             <Typography>Bio</Typography>
           </CardContent>
