@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import withStyles from "@material-ui/core/styles/withStyles";
 import axios from "axios";
+import dayjs from "dayjs";
+import relativeTime from "dayjs/plugin/relativeTime";
 
 //MUI Stuff
 import Card from "@material-ui/core/Card";
@@ -20,30 +22,28 @@ class Profile extends Component {
     user: {}
   };
   componentDidMount() {
-    const handle = this.props.match.params.handle;
-    axios.get(`/user/${handle}`).then(res => {
+    const userHandle = this.props.match.params.handle;
+    axios.get(`/user/${userHandle}`).then(res => {
       console.log(res);
       this.setState({
         user: {
-          credentials: {
-            handle,
-            createdAt: credentials.createdAt
-          }
+          handle: res.data.credentials.handle,
+          email: res.data.credentials.email,
+          createdAt: res.data.credentials.createdAt
         }
       });
     });
   }
   render() {
-    const {
-      credentials: { handle, createdAt }
-    } = this.state.user;
+    dayjs.extend(relativeTime);
+    const { handle, createdAt, email } = this.state.user;
     return (
       <Card>
         <CardActionArea>
           <CardContent>
             <Typography>{handle}</Typography>
-            <Typography>{createdAt}</Typography>
-            <Typography>Date Joined</Typography>
+            <Typography>{email}</Typography>
+            <Typography>{dayjs(createdAt).fromNow()}</Typography>
             <Typography>Bio</Typography>
           </CardContent>
         </CardActionArea>
