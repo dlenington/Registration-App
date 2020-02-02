@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Grid from "@material-ui/core/Grid";
 import Card from "../components/Card";
+import Profile from "../components/Profile";
 import { Typography } from "@material-ui/core";
 
 class Home extends Component {
@@ -12,7 +13,9 @@ class Home extends Component {
           <Typography variant="h1">Home</Typography>
           <Card></Card>
         </Grid>
-        <Grid item sm={4}></Grid>
+        <Grid item sm={4}>
+          <Profile></Profile>
+        </Grid>
       </Grid>
     );
   }
