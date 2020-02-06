@@ -22,10 +22,9 @@ class Profile extends Component {
     user: {}
   };
   componentDidMount() {
-    if (this.props.match.params.handle)
-      const userHandle = this.props.match.params.handle;
+    // const userHandle = this.props.match.params.handle;
 
-    axios.get(`/user/${userHandle}`).then(res => {
+    axios.get(`/user/`).then(res => {
       console.log(res);
       this.setState({
         user: {
