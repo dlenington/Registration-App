@@ -24,20 +24,21 @@ class Profile extends Component {
   componentDidMount() {
     // const userHandle = this.props.match.params.handle;
 
-    axios.get(`/user/`).then(res => {
+    axios.get(`/user`).then(res => {
       console.log(res);
       this.setState({
         user: {
           handle: res.data.credentials.handle,
           email: res.data.credentials.email,
-          createdAt: res.data.credentials.createdAt
+          createdAt: res.data.credentials.createdAt,
+          bio: ""
         }
       });
     });
   }
   render() {
     dayjs.extend(relativeTime);
-    const { handle, createdAt, email } = this.state.user;
+    const { handle, createdAt, email, bio } = this.state.user;
     return (
       <Card>
         <CardActionArea>
@@ -45,7 +46,7 @@ class Profile extends Component {
             <Typography>{handle}</Typography>
             <Typography>{email}</Typography>
             <Typography>{dayjs(createdAt).fromNow()}</Typography>
-            <Typography>Bio</Typography>
+            <Typography>{bio}</Typography>
           </CardContent>
         </CardActionArea>
       </Card>
