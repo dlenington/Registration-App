@@ -35,7 +35,7 @@ class login extends Component {
     axios
       .post("/login", userData)
       .then(res => {
-        console.log("SUCCESS");
+        console.log(res.data.token);
         const FBIdToken = `Bearer ${res.data.token}`;
         localStorage.setItem("FBIdToken", FBIdToken);
         axios.defaults.headers.common["Authorization"] = FBIdToken;
