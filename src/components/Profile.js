@@ -43,9 +43,11 @@ class Profile extends Component {
       <Card>
         <CardActionArea>
           <CardContent>
-            <Typography>{handle}</Typography>
-            <Typography>{email}</Typography>
-            <Typography>{dayjs(createdAt).fromNow()}</Typography>
+            <Typography variant="h5">{handle}</Typography>
+            <Typography variant="body2">{email}</Typography>
+            <Typography variant="body3">
+              User since {dayjs(createdAt).fromNow()}
+            </Typography>
             <Typography>{bio}</Typography>
           </CardContent>
         </CardActionArea>

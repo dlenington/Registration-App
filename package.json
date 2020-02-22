@@ -32,5 +32,5 @@
       "last 1 safari version"
     ]
   },
-  "proxy": "http://localhost:5000/bendan-app/us-central1/api"
+  "proxy": "http://localhost:5001/bendan-app/us-central1/api"
 }
