@@ -43,7 +43,13 @@ class MyCard extends Component {
         <CardActionArea>
           <CardContent>
             <Typography gutterBottom variant="h5" component="h2">
-              {post.userHandle}
+              Event:
+            </Typography>
+            <Typography gutterBottom variant="h5" component="h2">
+              Created by: {post.userHandle}
+            </Typography>
+            <Typography gutterBottom variant="h5" component="h2">
+              Date of event:
             </Typography>
             <Typography
               gutterBottom
@@ -52,6 +58,9 @@ class MyCard extends Component {
               component="h2"
             >
               {dayjs(post.createdAt).fromNow()}
+            </Typography>
+            <Typography variant="body1" component="p">
+              Attendees
             </Typography>
             <Typography variant="body1" component="p">
               {post.body}
