@@ -63,7 +63,7 @@ class MyCard extends Component {
               Attendees
             </Typography>
             <Typography variant="body1" component="p">
-              {post.body}
+              Description: {post.body}
             </Typography>
           </CardContent>
         </CardActionArea>
