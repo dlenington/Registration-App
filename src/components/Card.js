@@ -38,6 +38,7 @@ class MyCard extends Component {
     const { classes } = this.props;
     const { posts } = this.state;
     console.log("posts" + posts);
+    // const joinButton = post.userHandle ===
     return posts.map(post => (
       <Card key="post.postId" className={classes.card}>
         <CardActionArea>
@@ -73,6 +74,9 @@ class MyCard extends Component {
           </Button>
           <Button size="small" color="primary">
             More
+          </Button>
+          <Button size="small" color="secondary">
+            Join
           </Button>
         </CardActions>
       </Card>
